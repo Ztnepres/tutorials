@@ -11,7 +11,9 @@ angular.module('app')
 	    $scope.videos = Video.find({
 	      filter: {
 	    	  where: {
-		          uservideoid: $rootScope.currentUser.id
+		          //uservideoid: $rootScope.currentUser.id,
+		          videotouserid: $rootScope.currentUser.id,
+		          //userId: $rootScope.currentUser.id
 		      }
 	      }
 	    });
@@ -36,7 +38,8 @@ angular.module('app')
 		            like: $scope.video.like,
 		            dislike: $scope.video.dislike,
 		            userId: $rootScope.currentUser.id,
-		            uservideoid: $rootScope.currentUser.id
+		            uservideoid: $rootScope.currentUser.id,
+		            videotouserid: $rootScope.currentUser.id
 		          }
 	          )
 	        .$promise

@@ -31,7 +31,13 @@
     }
   },
   "validations": [],
-  "relations": { },
+  "relations": {
+    "videoBelongsToUser": {
+      "type": "belongsTo",
+      "model": "User",
+      "foreignKey": "videotouserid"
+    }
+  },
   "acls": [
     {
       "accessType": "*",
