@@ -14,25 +14,25 @@
     ]
   },
   "User": {
-    "dataSource": "postgresdb"
+    "dataSource": "db"
   },
   "AccessToken": {
-    "dataSource": "postgresdb",
+    "dataSource": "db",
     "public": false
   },
   "ACL": {
-    "dataSource": "postgresdb",
+    "dataSource": "db",
     "public": false
   },
   "RoleMapping": {
-    "dataSource": "postgresdb",
+    "dataSource": "db",
     "public": false
   },
   "Role": {
-    "dataSource": "postgresdb",
+    "dataSource": "db",
     "public": false
   },
   "Video": {
-    "dataSource": "postgresdb"
+    "dataSource": "db"
   }
 }

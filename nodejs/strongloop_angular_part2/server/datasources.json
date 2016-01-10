@@ -1,0 +1,15 @@
+{
+  "db": {
+    "name": "db",
+    "connector": "memory"
+  },
+  "postgresdb": {
+    "host": "127.0.0.1",
+    "port": 5432,
+    "database": "videoapp_db",
+    "username": "postgres",
+    "password": "passw0rd",
+    "name": "postgresdb",
+    "connector": "postgresql"
+  }
+}
