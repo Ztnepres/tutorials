@@ -3,19 +3,18 @@ var path = require('path');
 var models = require(path.resolve(__dirname, '../model-config.json'));
 var dataSource = app.dataSources.postgresdb;
 
-/**
 dataSource.automigrate([
 	'User', 
 	'AccessToken',
 	'ACL', 
-	'RoleMapping',
-	'Role', 
+	//'RoleMapping',
+	//'Role', 
 	'Video'
 ], function(err) {
 	if (err) throw err;
 });
-*/
 
+/**
 Object.keys(models).forEach(function(key) {
     if (typeof models[key].dataSource != 'undefined') {
         
@@ -25,4 +24,4 @@ Object.keys(models).forEach(function(key) {
         });
         
     }
-});
+});*/
