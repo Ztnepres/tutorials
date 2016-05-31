@@ -888,9 +888,9 @@ module.factory(
           method: "POST"
         },
 
-        // INTERNAL. Use Video.uservideos() instead.
-        "::get::Video::uservideos": {
-          url: urlBase + "/Videos/:id/uservideos",
+        // INTERNAL. Use Video.videoBelongsToUser() instead.
+        "::get::Video::videoBelongsToUser": {
+          url: urlBase + "/Videos/:id/videoBelongsToUser",
           method: "GET"
         },
 
@@ -1144,9 +1144,9 @@ module.factory(
       { 'id': '@id' },
       {
 
-        // INTERNAL. Use Video.uservideos() instead.
-        "prototype$__get__uservideos": {
-          url: urlBase + "/Videos/:id/uservideos",
+        // INTERNAL. Use Video.videoBelongsToUser() instead.
+        "prototype$__get__videoBelongsToUser": {
+          url: urlBase + "/Videos/:id/videoBelongsToUser",
           method: "GET"
         },
 
@@ -1716,12 +1716,12 @@ module.factory(
 
         /**
          * @ngdoc method
-         * @name lbServices.Video#uservideos
+         * @name lbServices.Video#videoBelongsToUser
          * @methodOf lbServices.Video
          *
          * @description
          *
-         * Fetches belongsTo relation uservideos.
+         * Fetches belongsTo relation videoBelongsToUser.
          *
          * @param {Object=} parameters Request parameters.
          *
@@ -1744,9 +1744,9 @@ module.factory(
          * This usually means the response is a `User` object.)
          * </em>
          */
-        R.uservideos = function() {
+        R.videoBelongsToUser = function() {
           var TargetResource = $injector.get("User");
-          var action = TargetResource["::get::Video::uservideos"];
+          var action = TargetResource["::get::Video::videoBelongsToUser"];
           return action.apply(R, arguments);
         };
 

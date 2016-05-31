@@ -2,14 +2,14 @@
   "db": {
     "name": "db",
     "connector": "memory"
-  },
+  },       
   "postgresdb": {
-    "host": "127.0.0.1",
-    "port": 5432,
-    "database": "videoapp_db",
-    "username": "postgres",
-    "password": "passw0rd",
     "name": "postgresdb",
-    "connector": "postgresql"
+    "connector": "postgresql",
+    "host": "<subdomain>.db.elephantsql.com",
+    "port": "5432",
+    "database": "<user1>",
+    "username": "<user1>",
+    "password": "<passw0rd>"
   }
 }

@@ -33,6 +33,7 @@
     "public": false
   },
   "Video": {
-    "dataSource": "postgresdb"
+    "dataSource": "postgresdb",
+    "public": true
   }
 }

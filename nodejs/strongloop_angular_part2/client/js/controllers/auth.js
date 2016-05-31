@@ -62,12 +62,4 @@ angular.module('app')
     }
   ])
   
-  .controller('AllVideosController', ['$scope', 'AuthService', '$state',
-    function($scope, AuthService, $state) {  
-      
-      $state.go('all-videos');
-      
-    }
-  ])
-  
 ;

@@ -1,5 +1,4 @@
 <section>
-  <h1>My Videos</h1>
   <article ng-repeat="v in videos.slice().reverse()">
     <header>
       <h1>{{v.title}}</h1>
@@ -8,10 +7,10 @@
     <p>url: {{v.url}}</p>
     <p>by: {{v.username}}</p>
     <p>date: {{v.date_published}}</p>
-    <p>likes: {{v.like}}, dislikes {{v.dislike}}</p>
+    <p>likes: {{v.likes}}, dislikes {{v.dislikes}}</p>
     <div class="actions" ng-show="currentUser">
       <button ui-sref="edit-video({ id: v.id })">Edit</button>
-      <button a ui-sref="delete-video({ id: v.id })">Delete</button>
+      <button a ui-sref="delete-video{ id: v.id })">Delete</button>
     </div>
   </article>
 </section>

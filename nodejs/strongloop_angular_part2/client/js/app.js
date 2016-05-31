@@ -13,55 +13,60 @@ angular.module("app", [
       templateUrl: 'views/sign-up-form.html',
       controller: 'SignUpController'
     })
+
     .state('sign-up-success', {
       url: '/sign-up/success',
       templateUrl: 'views/sign-up-success.html'
-	})
-	.state('login', {
+	  })
+
+	  .state('login', {
       url: '/login',
       templateUrl: 'views/login.html',
       controller: 'AuthLoginController'
-    })   
+    })
+    
     .state('logout', {
 	  url: '/logout',
 	  controller: 'AuthLogoutController'
     })
+		
+    .state('forbidden', {
+      url: '/forbidden',
+      templateUrl: 'views/forbidden.html',
+    })
 
-    
     .state('all-videos', {
       url: '/all-videos',
       templateUrl: 'views/all-videos.html',
-      controller: 'AllVideosController'
-    })    
-    .state('add-video', {
-      url: '/add-video',
-      templateUrl: 'views/video-form.html',
-      controller: 'AddVideoController',
-      authenticate: true
-    })    
+      controller: 'AllVideosController',
+    })
+
     .state('my-videos', {
       url: '/my-videos',
       templateUrl: 'views/my-videos.html',
       controller: 'MyVideosController',
       authenticate: true
     })
-    
+
+    .state('add-video', {
+      url: '/add-video',
+      templateUrl: 'views/video-form.html',
+      controller: 'AddVideoController',
+      authenticate: true
+    })
+
     .state('edit-video', {
       url: '/edit-video/:id',
       templateUrl: 'views/video-form.html',
       controller: 'EditVideoController',
       authenticate: true
     })
+    
     .state('delete-video', {
       url: '/delete-video/:id',
       controller: 'DeleteVideoController',
       authenticate: true
     })
-	
-    .state('forbidden', {
-      url: '/forbidden',
-      templateUrl: 'views/forbidden.html',
-    })
-      
+
   }
 ]);

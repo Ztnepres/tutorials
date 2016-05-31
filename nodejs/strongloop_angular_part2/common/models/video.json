@@ -20,13 +20,10 @@
     "date_published": {
       "type": "date"
     },
-    "like": {
+    "likes": {
       "type": "number"
     },
-    "dislike": {
-      "type": "number"
-    },
-    "uservideoid": {
+    "dislikes": {
       "type": "number"
     }
   },
