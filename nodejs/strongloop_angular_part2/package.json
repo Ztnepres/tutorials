@@ -16,7 +16,8 @@
     "serve-favicon": "^2.0.1",
     "angular": "1.5.5",
     "angular-ui-router": "^0.3.0",
-    "angular-resource": "^1.5.5"
+    "angular-resource": "^1.5.5",
+    "loopback-connector-postgresql":"*"
   },
   "devDependencies": {
     "jshint": "^2.5.6"

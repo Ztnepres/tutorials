@@ -10,7 +10,7 @@
     <p>likes: {{v.likes}}, dislikes {{v.dislikes}}</p>
     <div class="actions" ng-show="currentUser">
       <button ui-sref="edit-video({ id: v.id })">Edit</button>
-      <button a ui-sref="delete-video{ id: v.id })">Delete</button>
+      <button a ui-sref="delete-video({ id: v.id })">Delete</button>
     </div>
   </article>
 </section>
