@@ -1,0 +1,25 @@
+{
+  "name": "Answer",
+  "base": "Video",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "questionId": {
+      "type": "number",
+      "required": true,
+      "format": "int32"
+    }
+  },
+  "validations": [],
+  "relations": {
+    "answerBelongsToMember": {
+      "type": "belongsTo",
+      "model": "Member",
+      "foreignKey": "answerToMemberId"
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

@@ -1,0 +1,1464 @@
+swagger: '2.0'
+
+info:
+  x-ibm-name: remkohdev-qavideos3
+  version: 1.0.0
+  title: remkohdev-qavideos3
+
+schemes:
+  - https
+host: $(catalog.host)
+basePath: /api
+
+consumes:
+  - application/json
+produces:
+  - application/json
+
+securityDefinitions:
+ clientIdHeader:
+   type: apiKey
+   in: header
+   name: X-IBM-Client-Id
+ clientSecretHeader:
+   in: "header"
+   name: "X-IBM-Client-Secret"
+   type: "apiKey"
+
+
+security:
+ -
+   clientIdHeader: []
+   clientSecretHeader: []
+
+x-ibm-configuration:
+  testable: true
+  enforced: true
+  cors:
+    enabled: true
+  catalogs:
+    apic-dev:
+      properties:
+        runtime-url: $(TARGET_URL)
+    sb:
+      properties:
+        runtime-url: 'http://localhost:4001'
+  assembly:
+    execute:
+      - invoke:
+          target-url: $(runtime-url)$(request.path)$(request.search)
+
+paths:
+  /v1/Questions:
+    get:
+      tags:
+        - swagger_v1
+      summary: |
+        get questions by member.
+      operationId: swagger_v1.getQuestions
+      parameters:
+        - name: memberid
+          in: query
+          description: Unique Identifier of the Member.
+          required: true
+          type: number
+          format: double
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Unexpected error
+            $ref: '#/definitions/Error'
+      deprecated: false
+  /v1/Answers:
+    get:
+      tags:
+        - swagger_v1
+      summary: |
+        get answers by member.
+      operationId: swagger_v1.getAnswers
+      parameters:
+        - name: memberid
+          in: query
+          description: Unique Identifier of the Member.
+          required: true
+          type: number
+          format: double
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: Unexpected error
+            $ref: '#/definitions/Error'
+      deprecated: false
+  '/Members/{id}/accessTokens/{fk}':
+    get:
+      tags:
+        - Member
+      summary: Find a related item by id for accessTokens.
+      operationId: Member.prototype.__findById__accessTokens
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for accessTokens
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: User id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/AccessToken'
+      deprecated: false
+    delete:
+      tags:
+        - Member
+      summary: Delete a related item by id for accessTokens.
+      operationId: Member.prototype.__destroyById__accessTokens
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for accessTokens
+          required: true
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: User id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+    put:
+      tags:
+        - Member
+      summary: Update a related item by id for accessTokens.
+      operationId: Member.prototype.__updateById__accessTokens
+      parameters:
+        - name: fk
+          in: path
+          description: Foreign key for accessTokens
+          required: true
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/AccessToken'
+        - name: id
+          in: path
+          description: User id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/AccessToken'
+      deprecated: false
+  '/Members/{id}/accessTokens':
+    get:
+      tags:
+        - Member
+      summary: Queries accessTokens of Member.
+      operationId: Member.prototype.__get__accessTokens
+      parameters:
+        - name: filter
+          in: query
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: User id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/AccessToken'
+      deprecated: false
+    post:
+      tags:
+        - Member
+      summary: Creates a new instance in accessTokens of this model.
+      operationId: Member.prototype.__create__accessTokens
+      parameters:
+        - name: data
+          in: body
+          required: false
+          schema:
+            $ref: '#/definitions/AccessToken'
+        - name: id
+          in: path
+          description: User id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/AccessToken'
+      deprecated: false
+    delete:
+      tags:
+        - Member
+      summary: Deletes all accessTokens of this model.
+      operationId: Member.prototype.__delete__accessTokens
+      parameters:
+        - name: id
+          in: path
+          description: User id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  '/Members/{id}/accessTokens/count':
+    get:
+      tags:
+        - Member
+      summary: Counts accessTokens of Member.
+      operationId: Member.prototype.__count__accessTokens
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: id
+          in: path
+          description: User id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /Members:
+    post:
+      tags:
+        - Member
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Member.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/Member'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Member'
+      deprecated: false
+    put:
+      tags:
+        - Member
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: Member.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/Member'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Member'
+      deprecated: false
+    get:
+      tags:
+        - Member
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Member.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Member'
+      deprecated: false
+  '/Members/{id}/exists':
+    get:
+      tags:
+        - Member
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Member.exists__get_Members_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Members/{id}':
+    head:
+      tags:
+        - Member
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Member.exists__head_Members_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Member
+      summary: Find a model instance by id from the data source.
+      operationId: Member.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Member'
+      deprecated: false
+    delete:
+      tags:
+        - Member
+      summary: Delete a model instance by id from the data source.
+      operationId: Member.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - Member
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: Member.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/Member'
+        - name: id
+          in: path
+          description: User id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Member'
+      deprecated: false
+  /Members/findOne:
+    get:
+      tags:
+        - Member
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Member.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Member'
+      deprecated: false
+  /Members/update:
+    post:
+      tags:
+        - Member
+      summary: Update instances of the model matched by where from the data source.
+      operationId: Member.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/Member'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /Members/count:
+    get:
+      tags:
+        - Member
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Member.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /Members/login:
+    post:
+      tags:
+        - Member
+      summary: Login a user with username/email and password.
+      operationId: Member.login
+      parameters:
+        - name: credentials
+          in: body
+          required: true
+          schema:
+            type: object
+        - name: include
+          in: query
+          description: Related objects to include in the response. See the description of return value for more details.
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: >+
+              The response body contains properties of the AccessToken created on
+              login.
+
+              Depending on the value of `include` parameter, the body may contain
+              additional properties:
+
+
+
+
+
+
+
+                - `user` - `{User}` - Data of the currently logged in user.
+
+              (`include=user`)
+
+
+            type: object
+      deprecated: false
+  /Members/logout:
+    post:
+      tags:
+        - Member
+      summary: Logout a user with access token.
+      operationId: Member.logout
+      parameters: []
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  /Members/confirm:
+    get:
+      tags:
+        - Member
+      summary: Confirm a user registration with email verification token.
+      operationId: Member.confirm
+      parameters:
+        - name: uid
+          in: query
+          required: true
+          type: string
+        - name: token
+          in: query
+          required: true
+          type: string
+        - name: redirect
+          in: query
+          required: false
+          type: string
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  /Members/reset:
+    post:
+      tags:
+        - Member
+      summary: Reset password for a user with email.
+      operationId: Member.resetPassword
+      parameters:
+        - name: options
+          in: body
+          required: true
+          schema:
+            type: object
+      responses:
+        '204':
+          description: Request was successful
+      deprecated: false
+  /Questions:
+    post:
+      tags:
+        - Question
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Question.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/Question'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Question'
+      deprecated: false
+    put:
+      tags:
+        - Question
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: Question.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/Question'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Question'
+      deprecated: false
+    get:
+      tags:
+        - Question
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Question.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Question'
+      deprecated: false
+  '/Questions/{id}/exists':
+    get:
+      tags:
+        - Question
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Question.exists__get_Questions_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Questions/{id}':
+    head:
+      tags:
+        - Question
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Question.exists__head_Questions_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Question
+      summary: Find a model instance by id from the data source.
+      operationId: Question.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Question'
+      deprecated: false
+    delete:
+      tags:
+        - Question
+      summary: Delete a model instance by id from the data source.
+      operationId: Question.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - Question
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: Question.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/Question'
+        - name: id
+          in: path
+          description: Video id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Question'
+      deprecated: false
+  /Questions/findOne:
+    get:
+      tags:
+        - Question
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Question.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Question'
+      deprecated: false
+  /Questions/update:
+    post:
+      tags:
+        - Question
+      summary: Update instances of the model matched by where from the data source.
+      operationId: Question.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/Question'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /Questions/count:
+    get:
+      tags:
+        - Question
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Question.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  '/Answers/{id}/answerBelongsToMember':
+    get:
+      tags:
+        - Answer
+      summary: Fetches belongsTo relation answerBelongsToMember.
+      operationId: Answer.prototype.__get__answerBelongsToMember
+      parameters:
+        - name: refresh
+          in: query
+          required: false
+          type: boolean
+        - name: id
+          in: path
+          description: Video id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Member'
+      deprecated: false
+  /Answers:
+    post:
+      tags:
+        - Answer
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Answer.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/Answer'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Answer'
+      deprecated: false
+    put:
+      tags:
+        - Answer
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: Answer.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/Answer'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Answer'
+      deprecated: false
+    get:
+      tags:
+        - Answer
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Answer.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Answer'
+      deprecated: false
+  '/Answers/{id}/exists':
+    get:
+      tags:
+        - Answer
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Answer.exists__get_Answers_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Answers/{id}':
+    head:
+      tags:
+        - Answer
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Answer.exists__head_Answers_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Answer
+      summary: Find a model instance by id from the data source.
+      operationId: Answer.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Answer'
+      deprecated: false
+    delete:
+      tags:
+        - Answer
+      summary: Delete a model instance by id from the data source.
+      operationId: Answer.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - Answer
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: Answer.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/Answer'
+        - name: id
+          in: path
+          description: Video id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Answer'
+      deprecated: false
+  /Answers/findOne:
+    get:
+      tags:
+        - Answer
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Answer.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Answer'
+      deprecated: false
+  /Answers/update:
+    post:
+      tags:
+        - Answer
+      summary: Update instances of the model matched by where from the data source.
+      operationId: Answer.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/Answer'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /Answers/count:
+    get:
+      tags:
+        - Answer
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Answer.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+  /Stickers:
+    post:
+      tags:
+        - Sticker
+      summary: Create a new instance of the model and persist it into the data source.
+      operationId: Sticker.create
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/Sticker'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Sticker'
+      deprecated: false
+    put:
+      tags:
+        - Sticker
+      summary: Update an existing model instance or insert a new one into the data source.
+      operationId: Sticker.upsert
+      parameters:
+        - name: data
+          in: body
+          description: Model instance data
+          required: false
+          schema:
+            $ref: '#/definitions/Sticker'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Sticker'
+      deprecated: false
+    get:
+      tags:
+        - Sticker
+      summary: Find all instances of the model matched by filter from the data source.
+      operationId: Sticker.find
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Sticker'
+      deprecated: false
+  '/Stickers/{id}/exists':
+    get:
+      tags:
+        - Sticker
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Sticker.exists__get_Stickers_{id}_exists'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+  '/Stickers/{id}':
+    head:
+      tags:
+        - Sticker
+      summary: Check whether a model instance exists in the data source.
+      operationId: 'Sticker.exists__head_Stickers_{id}'
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              exists:
+                type: boolean
+      deprecated: false
+    get:
+      tags:
+        - Sticker
+      summary: Find a model instance by id from the data source.
+      operationId: Sticker.findById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+        - name: filter
+          in: query
+          description: Filter defining fields and include
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Sticker'
+      deprecated: false
+    delete:
+      tags:
+        - Sticker
+      summary: Delete a model instance by id from the data source.
+      operationId: Sticker.deleteById
+      parameters:
+        - name: id
+          in: path
+          description: Model id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+      deprecated: false
+    put:
+      tags:
+        - Sticker
+      summary: Update attributes for a model instance and persist it into the data source.
+      operationId: Sticker.prototype.updateAttributes
+      parameters:
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/Sticker'
+        - name: id
+          in: path
+          description: PersistedModel id
+          required: true
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Sticker'
+      deprecated: false
+  /Stickers/findOne:
+    get:
+      tags:
+        - Sticker
+      summary: Find first instance of the model matched by filter from the data source.
+      operationId: Sticker.findOne
+      parameters:
+        - name: filter
+          in: query
+          description: 'Filter defining fields, where, include, order, offset, and limit'
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            $ref: '#/definitions/Sticker'
+      deprecated: false
+  /Stickers/update:
+    post:
+      tags:
+        - Sticker
+      summary: Update instances of the model matched by where from the data source.
+      operationId: Sticker.updateAll
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+        - name: data
+          in: body
+          description: An object of model property name/value pairs
+          required: false
+          schema:
+            $ref: '#/definitions/Sticker'
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            description: The number of instances updated
+            type: object
+      deprecated: false
+  /Stickers/count:
+    get:
+      tags:
+        - Sticker
+      summary: Count instances of the model matched by where from the data source.
+      operationId: Sticker.count
+      parameters:
+        - name: where
+          in: query
+          description: Criteria to match model instances
+          required: false
+          type: string
+          format: JSON
+      responses:
+        '200':
+          description: Request was successful
+          schema:
+            type: object
+            properties:
+              count:
+                type: number
+                format: double
+      deprecated: false
+
+
+definitions:
+  Error:
+    properties:
+      message:
+        type: string
+      code:
+        format: int32
+        type: number
+      description:
+        type: string
+      id:
+        type: number
+        format: double
+    additionalProperties: false
+  x-any:
+    properties: {}
+  AccessToken:
+    properties:
+      id:
+        type: string
+      ttl:
+        default: 1209600
+        description: time to live in seconds (2 weeks by default)
+        type: number
+        format: double
+      created:
+        type: string
+        format: date
+      userId:
+        type: number
+        format: double
+    required:
+      - id
+    additionalProperties: false
+  Member:
+    properties:
+      userLevel:
+        description: skill and engagement level of the member..
+        type: string
+      realm:
+        type: string
+      username:
+        type: string
+      credentials:
+        type: object
+      challenges:
+        type: object
+      email:
+        type: string
+      emailVerified:
+        type: boolean
+      status:
+        type: string
+      created:
+        type: string
+        format: date
+      lastUpdated:
+        type: string
+        format: date
+      id:
+        type: number
+        format: double
+    required:
+      - email
+    additionalProperties: false
+  Question:
+    properties:
+      url:
+        description: full path or URL to the source of the video file.
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      datePublished:
+        format: date
+        type: string
+      memberId:
+        format: int32
+        type: number
+      id:
+        type: number
+        format: double
+    required:
+      - url
+      - title
+      - memberId
+    additionalProperties: false
+  Answer:
+    properties:
+      questionId:
+        format: int32
+        type: number
+      url:
+        description: full path or URL to the source of the video file.
+        type: string
+      title:
+        type: string
+      description:
+        type: string
+      datePublished:
+        format: date
+        type: string
+      memberId:
+        format: int32
+        type: number
+      id:
+        type: number
+        format: double
+      answerToMemberId:
+        type: number
+        format: double
+    required:
+      - questionId
+      - url
+      - title
+      - memberId
+    additionalProperties: false
+  Sticker:
+    properties:
+      stickerType:
+        default: like
+        enum:
+          - emoji-happy-face
+          - emoji-sad-face
+          - like
+          - dislike
+        description: type of sticker or user reaction.
+        type: string
+      memberId:
+        format: int32
+        type: number
+      videoId:
+        format: int32
+        type: number
+      id:
+        type: number
+        format: double
+    required:
+      - stickerType
+      - memberId
+      - videoId
+    additionalProperties: false
+

@@ -1,0 +1,39 @@
+{
+  "name": "Video",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "url": {
+      "type": "string",
+      "required": true,
+      "description": "full path or URL to the source of the video file."
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    },
+    "datePublished": {
+      "type": "string",
+      "format": "date"
+    },
+    "memberId": {
+      "type": "number",
+      "required": true,
+      "format": "int32",
+      "readOnly": true
+    }
+  },
+  "scope": {
+    "fields": ["url", "title", "description", "datePublished"]
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

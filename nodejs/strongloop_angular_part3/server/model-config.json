@@ -1,0 +1,64 @@
+{
+  "_meta": {
+    "sources": [
+      "loopback/common/models",
+      "loopback/server/models",
+      "../common/models",
+      "./models"
+    ],
+    "mixins": [
+      "loopback/common/mixins",
+      "loopback/server/mixins",
+      "../common/mixins",
+      "./mixins"
+    ]
+  },
+  "User": {
+    "dataSource": "postgresdb",
+    "public": false
+  },
+  "AccessToken": {
+    "dataSource": "postgresdb",
+    "public": false
+  },
+  "ACL": {
+    "dataSource": "postgresdb",
+    "public": false
+  },
+  "RoleMapping": {
+    "dataSource": "postgresdb",
+    "public": false
+  },
+  "Role": {
+    "dataSource": "postgresdb",
+    "public": false
+  },
+  "swagger_v1": {
+    "dataSource": null,
+    "public": true
+  },
+  "Error": {
+    "dataSource": "postgresdb",
+    "public": false
+  },
+  "Member": {
+    "dataSource": "postgresdb",
+    "public": true
+  },
+  "Question": {
+    "dataSource": "postgresdb",
+    "public": true
+  },
+  "Answer": {
+    "dataSource": "postgresdb",
+    "public": true
+  },
+  "Video": {
+    "dataSource": "postgresdb",
+    "public": false
+  },
+  "Sticker": {
+    "dataSource": "postgresdb",
+    "public": true
+  }
+}

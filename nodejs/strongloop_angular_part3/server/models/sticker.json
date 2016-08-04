@@ -1,0 +1,36 @@
+{
+  "name": "Sticker",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "stickerType": {
+      "type": "string",
+      "required": true,
+      "description": "type of sticker or user reaction.",
+      "default": "like",
+      "enum": [
+        "emoji-happy-face",
+        "emoji-sad-face",
+        "like",
+        "dislike"
+      ]
+    },
+    "memberId": {
+      "type": "number",
+      "required": true,
+      "format": "int32"
+    },
+    "videoId": {
+      "type": "number",
+      "required": true,
+      "format": "int32"
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}

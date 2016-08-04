@@ -1,0 +1,18 @@
+{
+  "name": "Member",
+  "base": "User",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "userLevel": {
+      "type": "string",
+      "description": "skill and engagement level of the member.."
+    }
+  },
+  "validations": [],
+  "relations": {},
+  "acls": [],
+  "methods": {}
+}
