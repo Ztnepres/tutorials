@@ -3,6 +3,14 @@ var boot = require('loopback-boot');
 
 var app = module.exports = loopback();
 
+/**
+TODO: fix this
+app.use('/js/angular', 
+  loopback.static(__dirname + '/node_modules/angular'));
+app.use('/js/angular-ui-router', 
+  loopback.static(__dirname + '/node_modules/angular-ui-router/release'));
+*/
+
 app.start = function() {
   // start the web server
   return app.listen(function() {

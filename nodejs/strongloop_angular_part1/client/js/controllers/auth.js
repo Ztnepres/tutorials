@@ -1,73 +1,45 @@
 angular.module('app')
 
-  .controller('SignUpController', ['$scope', 'AuthService', '$state', 
-    function($scope, AuthService, $state) {
-	  // prepopulate
-	  $scope.user = {
-        email: 'user1@email.com',
-        password: 'passw0rd'
-	  };
-  
-	  $scope.register = function() {
-		AuthService.register($scope.user.email, $scope.user.password)
-        // handle promise
-        // onsuccess
-        .then(function() {
-          $state.go('sign-up-success');
-        },
-        // onerror
-        function (err) {
-          $state.go('forbidden');
-        });
-      };  
-      
-    }
-  ])
+.controller('SignUpController', ['$scope', '$state', 'AuthService', function($scope, $state, AuthService ){
 
-  .controller('AuthLoginController', ['$scope', 'AuthService', '$state',
-    function($scope, AuthService, $state) {
-	  // prepopulate
-	  $scope.user = {
-		email: 'user1@email.com',
-		password: 'passw0rd'
-	  };
-	  
-	  $scope.login = function() {
-        AuthService.login($scope.user.email, $scope.user.password)
-        // onsuccess
-        .then(function() {
-          $state.go('all-videos');
-        },
-        // onerror
-        function (err) {
-          $state.go('forbidden');
-        }
-        );
-      };
-      
-    }
-  ])
-  
-  .controller('AuthLogoutController', ['$scope', 'AuthService', '$state',
-    function($scope, AuthService, $state) {  
-	  AuthService.logout()
-	  // onsuccess
-	  .then(function() {
+    $scope.register = function() {
+		AuthService.register($scope.user.email, $scope.user.password)
+	      // handle promise
+	      // onsuccess
+	      .then(function() {
+	        $state.go('sign-up-success');
+	      },
+	      // onerror
+	      function (err) {
+	        // tbd
+		});
+    };
+}])
+
+.controller('AuthLoginController', ['$scope', '$state', 'AuthService', function($scope, $state, AuthService) {
+
+    $scope.login = function() {
+      AuthService.login($scope.user.email, $scope.user.password)
+      .then(function() {
         $state.go('all-videos');
       },
-      // onerror
-      function (err) {
-        $state.go('forbidden');
+      function() {
+        // tbd
+      });
+    };
+}])
+
+.controller('AuthLogoutController', ['$scope', 'AuthService', '$state',
+    function($scope, AuthService, $state) {
+      AuthService.logout()
+      .then(function() {
+        $state.go('all-videos');
+      },
+      function() {
+        // tbd
       });
     }
-  ])
-  
-  .controller('AllVideosController', ['$scope', 'AuthService', '$state',
-    function($scope, AuthService, $state) {  
-      
-      $state.go('all-videos');
-      
-    }
-  ])
-  
+])
+
+
 ;

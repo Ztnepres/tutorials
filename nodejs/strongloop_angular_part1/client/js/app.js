@@ -1,13 +1,14 @@
-angular.module("app", [
-    "ui.router",
-    "lbServices"
-  ])
+angular.module('app', [
+    'ui.router',
+    'lbServices'
+])
+
 .config([
   '$stateProvider',
   '$urlRouterProvider',
   function($stateProvider, $urlRouterProvider) {
+  
     $stateProvider
-
     .state('sign-up', {
       url: '/sign-up',
       templateUrl: 'views/sign-up-form.html',
@@ -17,28 +18,25 @@ angular.module("app", [
     .state('sign-up-success', {
       url: '/sign-up/success',
       templateUrl: 'views/sign-up-success.html'
-	})
+	  })
 
-	.state('login', {
+    .state('login', {
       url: '/login',
       templateUrl: 'views/login.html',
       controller: 'AuthLoginController'
     })
     
-    .state('logout', {
-	  url: '/logout',
-	  controller: 'AuthLogoutController'
-    })
-
     .state('all-videos', {
       url: '/all-videos',
       templateUrl: 'views/all-videos.html'
     })
-		
-    .state('forbidden', {
-      url: '/forbidden',
-      templateUrl: 'views/forbidden.html',
+
+    .state('logout', {
+      url: '/logout',
+      templateUrl: 'views/all-videos.html',
+      controller: 'AuthLogoutController'
     })
-      
+
+
   }
 ]);
